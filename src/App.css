@@ -1,0 +1,15 @@
+#root {
+  @apply max-w-screen-lg mx-auto justify-center; /* Center content */
+}
+
+body {
+  @apply bg-black text-slate-100;
+}
+
+* {
+  @apply select-none;
+}
+
+h2, h3 {
+  text-align: center; /* Center headings */
+}
