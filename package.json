@@ -1,9 +1,9 @@
 {
   "name": "hackathon",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
-  "type": "module",
   "homepage": "https://cr1phy.github.io/grotesque-webpage",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
