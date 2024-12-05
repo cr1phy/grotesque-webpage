@@ -4,20 +4,17 @@ import { participants } from "../data/Data";
 import TeamMemberCard from "../components/TeamMemberCard";
 
 const Contacts: React.FC = () => {
-  const slideRefs = useRef<HTMLDivElement[]>([]); // Массив ссылок на слайды
-  const [currentSlide, setCurrentSlide] = useState(0); // Индекс текущего слайда
+  const slideRefs = useRef<HTMLDivElement[]>([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Функция переключения слайдов
   const goToSlide = (index: number) => {
-    if (index === currentSlide) return; // Если текущий слайд совпадает, ничего не делаем
+    if (index === currentSlide) return;
 
     const current = slideRefs.current[currentSlide];
     const next = slideRefs.current[index];
 
-    // Направление для анимации
-    const direction = index > currentSlide ? "-100%" : "100%"; // Определяем направление перехода
+    const direction = index > currentSlide ? "-100%" : "100%";
 
-    // Анимация GSAP: уходим текущий слайд и приходим к следующему
     gsap.to(current, { x: direction, autoAlpha: 0, duration: 0.8, ease: "power2.out" });
     gsap.fromTo(
       next,
@@ -25,10 +22,9 @@ const Contacts: React.FC = () => {
       { x: "0%", autoAlpha: 1, duration: 0.8, ease: "power2.out" }
     );
 
-    setCurrentSlide(index); // Устанавливаем текущий слайд
+    setCurrentSlide(index);
   };
 
-  // Функция для обратного направления движения
   const reverseDirection = (direction: string) => {
     return direction === "-100%" ? "100%" : "-100%";
   };
@@ -38,22 +34,20 @@ const Contacts: React.FC = () => {
       id="contacts"
       className="relative overflow-hidden w-screen h-screen bg-black text-white"
     >
-      {/* Заголовок */}
       <h2 className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 text-4xl font-bold font-playfair bg-black px-4">
         Контакты
       </h2>
 
-      {/* Контейнер для слайдов */}
       <div className="relative w-full h-full">
         {participants.map((participant, index) => (
           <div
             key={index}
-            ref={(el) => (slideRefs.current[index] = el!)} // Запоминаем ссылки на слайды
+            ref={(el) => (slideRefs.current[index] = el!)}
             className={`absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 transition-all duration-500 ${
               currentSlide === index ? "opacity-100" : "opacity-0"
             }`}
           >
-            <TeamMemberCard {...participant} /> {/* Отображаем карточку участника */}
+            <TeamMemberCard {...participant} />
           </div>
         ))}
       </div>

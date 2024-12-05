@@ -2,8 +2,8 @@ import React, { useRef, useState } from "react";
 import { gsap } from "gsap";
 
 const AboutUs: React.FC = () => {
-  const slideRefs = useRef<HTMLDivElement[]>([]); // Массив ссылок на слайды
-  const [currentSlide, setCurrentSlide] = useState(0); // Индекс текущего слайда
+  const slideRefs = useRef<HTMLDivElement[]>([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     'Мы — команда "Гротеск". Наша цель — объединить технические инновации и творчество, создавая продукты, которые решают реальные проблемы, одновременно вызывая эмоции и вдохновение у пользователей.',
@@ -20,8 +20,8 @@ const AboutUs: React.FC = () => {
     const current = slideRefs.current[currentSlide];
     const next = slideRefs.current[index];
 
-    const direction = index > currentSlide ? "100%" : "-100%"; // Определяем направление
-    const oppositeDirection = index > currentSlide ? "-100%" : "100%"; // Противоположное направление
+    const direction = index > currentSlide ? "100%" : "-100%";
+    const oppositeDirection = index > currentSlide ? "-100%" : "100%";
 
     // Анимация
     gsap.to(current, {
@@ -42,8 +42,6 @@ const AboutUs: React.FC = () => {
   return (
     <div className="relative w-screen h-screen bg-black flex flex-col items-center justify-center">
       <h2 className="text-4xl font-serif font-bold mb-8 text-white text-center">О нас</h2>
-
-      {/* Слайдер */}
       <div className="relative w-11/12 md:w-3/4 h-2/3 border border-white flex items-center justify-center overflow-hidden">
         {slides.map((text, index) => (
           <div
@@ -63,14 +61,12 @@ const AboutUs: React.FC = () => {
                   key={wordIndex}
                   className="inline-block underline decoration-blue-500 decoration-2"
                 >
-                  {word}&nbsp; {/* Добавляем пробел */}
+                  {word}&nbsp;
                 </span>
               ))}
             </p>
           </div>
         ))}
-
-        {/* Кнопки управления */}
         <button
           onClick={() => goToSlide(currentSlide - 1)}
           disabled={currentSlide === 0}
@@ -85,8 +81,6 @@ const AboutUs: React.FC = () => {
         >
           &#8594;
         </button>
-
-        {/* Точки навигации */}
         <div className="absolute bottom-4 flex space-x-2">
           {slides.map((_, index) => (
             <button

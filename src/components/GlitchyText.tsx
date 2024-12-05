@@ -73,7 +73,7 @@ const GlitchText = () => {
         anchorX="center"
         anchorY="middle"
         children="grotesque."
-        font="/fonts/Southern.ttf"
+        font="./assets/fonts/Southern.ttf"
       />
       <shaderMaterial
         ref={shaderMaterialRef}

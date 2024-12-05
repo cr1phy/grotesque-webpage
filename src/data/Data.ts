@@ -58,7 +58,7 @@ export const projects = [
     status: "planned",
     technologies: ["Rust", "PostgreSQL", "Redis", "Websockets"],
     projectUrl: "https://towny.ru",
-    photoUrl: "/photos/towny.jpg",
+    photoUrl: "./assets/photos/towny.jpg",
     authors: [
       {
         firstName: "Сергей",
